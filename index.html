@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Kalender</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 15px;
+        }
+
+        .not-this-month {
+            color: lightblue;
+        }
+
+        td:hover {
+            background-color: #D6EEEE;
+        }
+    </style>
+</head>
+
+<body id='calendar'>
+
+    <label for="date-input">Insert date:</label><br>
+    <input id="date-input" type="date">
+    <button id="go-button" type="button">Go</button>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
