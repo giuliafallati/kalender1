@@ -7,7 +7,7 @@ var dateInput= document.getElementById( 'date-input');
 var goButton= document.getElementById( 'go-button');
 
 goButton.onclick= function() {
-alert( dateInput.value);
+//alert( "Das Datum ist: " + dateInput.value);
 
 // Table Element dem Body hinzufügen
 const tableElement= document.createElement( 'table');
@@ -34,10 +34,10 @@ myDate.setDate(myDate.getDate() + 1);
 
 tableRowElement = document.createElement( 'tr');
 var tableCellElementMo = document.createElement( 'td');
-textElementMo = document.createTextNode( myDate.toLocaleString('de', { weekday: 'long'}));
+/*textElementMo = document.createTextNode( myDate.toLocaleString('de', { weekday: 'long'}));
 
 tableCellElementMo.appendChild( textElementMo);
-tableRowElement.appendChild( tableCellElementMo);
+tableRowElement.appendChild( tableCellElementMo);*/
 
 
 
@@ -47,7 +47,7 @@ while( myDate.getDay() != 1);
 
 //tableElement.appendChild(tableRowElement);
 
-for (; myDate != 1; ) {
+ do{
 
 var tableCellElement = document.createElement( 'td');
 textElement = document.createTextNode(myDate.toLocaleString('de', { weekday: 'long'}));
@@ -57,6 +57,27 @@ myDate.setDate(myDate.getDate() + 1);
 tableElement.appendChild(tableRowElement);
 
 }
+while ( myDate.getDay() != 1);
+
+var dayOfMonth = 1;
+tableRowElement = document.createElement('tr');
+
+do{
+
+    
+    var tableCellElement = document.createElement('td');
+    textElement = document.createTextNode(dayOfMonth);
+    tableCellElement.appendChild(textElement);
+    tableRowElement.appendChild( tableCellElement);
+    var dayOfMonth = dayOfMonth + 1;
+    tableElement.appendChild(tableRowElement);
+
+    if (dayOfMonth === 7 || 14 || 21 || 28){
+        var tableRowElement = document.createElement('tr');
+    }
+
+}
+while ( dayOfMonth <= 31);
 
 /*var tableCellElementDi = document.createElement( 'td');
 textElementDi = document.createTextNode("Dienstag");
