@@ -51,33 +51,110 @@ while( myDate.getDay() != 1);
 
 var tableCellElement = document.createElement( 'td');
 textElement = document.createTextNode(myDate.toLocaleString('de', { weekday: 'long'}));
-tableCellElement.appendChild( textElement);
+tableCellElement.appendChild(textElement);
 tableRowElement.appendChild( tableCellElement);
 myDate.setDate(myDate.getDate() + 1);
 tableElement.appendChild(tableRowElement);
 
 }
-while ( myDate.getDay() != 1);
+while ( myDate.getDay() != 1); 
 
-var dayOfMonth = 1;
+myDate = new Date( dateInput.value);
+
+
+var firstDay = new Date(myDate.getFullYear(), myDate.getMonth() , 1);
+var lastDay = new Date(myDate.getFullYear(), myDate.getMonth() + 1 , 0);
+
 tableRowElement = document.createElement('tr');
 
-do{
+//var dayOfWeek = myDate.toLocaleString('de', { weekday: 'long'});
+var startOfMonth = 0;
+var firstWeekday = firstDay.getDay();
+       
 
+    do{
+
+        if (firstDay.getDay() == 0) {
+
+            do{
+
+            textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long'}));
+            var tableCellElement = document.createElement('td');
+            textElement = document.createTextNode(" ");
+            tableCellElement.appendChild(textElement);
+            tableRowElement.appendChild( tableCellElement);
+            startOfMonth = startOfMonth + 1;
+            tableElement.appendChild(tableRowElement);
+            }
+            while(startOfMonth != 6);
+
+        }
+        else{
+
+            textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long'}));
+            var tableCellElement = document.createElement('td');
+            textElement = document.createTextNode(" ");
+            tableCellElement.appendChild(textElement);
+            tableRowElement.appendChild( tableCellElement);
+            //if (startOfMonth != firstWeekday){
+            startOfMonth = startOfMonth + 1;
+            // }
+            tableElement.appendChild(tableRowElement);
+        }
+    }
+    while ( startOfMonth <= firstWeekday - 2); 
+
+    do{
+
+        if (firstDay.getDay() == 1){
+            var tableRowElement = document.createElement('tr');
+        }
+       
     
+        var tableCellElement = document.createElement('td');
+        textElement = document.createTextNode(firstDay.toLocaleString('de', { day: 'numeric'}));
+        tableCellElement.appendChild(textElement);
+        tableRowElement.appendChild( tableCellElement);
+        firstDay.setDate(firstDay.getDate() + 1);
+        tableElement.appendChild(tableRowElement);
+    
+       
+    
+    }
+    while ( firstDay <= lastDay);
+
+    //var endOfMonth = ;
+    var lastWeekday = lastDay.getDay();
+
+if (lastDay.getDay() != 0){
+
+    do {
+
+    textElement = document.createTextNode(lastWeekday.toLocaleString('de', { weekday: 'long'}));
     var tableCellElement = document.createElement('td');
-    textElement = document.createTextNode(dayOfMonth);
+    textElement = document.createTextNode(" ");
     tableCellElement.appendChild(textElement);
     tableRowElement.appendChild( tableCellElement);
-    var dayOfMonth = dayOfMonth + 1;
+    if(lastWeekday != 6){
+    lastWeekday = lastWeekday + 1;
+    }
+    else{
+        lastWeekday = lastWeekday - 6;
+    }
     tableElement.appendChild(tableRowElement);
 
-    if (dayOfMonth === 7 || 14 || 21 || 28){
-        var tableRowElement = document.createElement('tr');
     }
 
+    while( lastWeekday != 0);
+
 }
-while ( dayOfMonth <= 31);
+
+
+
+
+
+
+
 
 /*var tableCellElementDi = document.createElement( 'td');
 textElementDi = document.createTextNode("Dienstag");

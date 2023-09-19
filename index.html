@@ -4,29 +4,48 @@
 <head>
     <title>Kalender</title>
     <style>
+        body{
+            background-color: rgb(197, 245, 197);
+        }
+
         table,
         th,
         td {
             border: 1px solid black;
             text-align: left;
             padding: 15px;
+            font-family: cursive;
+            color: rgb(143, 108, 63);
+        }
+        table{
+            background-color: rgb(255, 255, 185);
+            margin: 20px;
+        }
+        th{
+            background-color: bisque;
+            
+        }
+        td{
+            background-color: lightyellow;
         }
 
-        .not-this-month {
-            color: lightblue;
-        }
+       
 
         td:hover {
-            background-color: #D6EEEE;
+            background-color: linen;
+        }
+
+        .dateInput.value{
+            background-color: coral;
         }
     </style>
 </head>
 
 <body id='calendar'>
 
-    <label for="date-input">Insert date:</label><br>
-    <input id="date-input" type="date">
-    <button id="go-button" type="button">Go</button>
+    <label for="date-input" style="font-family: cursive; color: rgb(143, 108, 63);">Insert date:</label><br>
+    <input id="date-input" type="date" style="background-color: rgb(247, 227, 206);">
+    <button id="go-button" type="button" style="background-color: rgb(247, 227, 206); font-family: cursive; color: rgb(143, 108, 63);">Go</button>
     <script src="js/index.js"></script>
 </body>
 
