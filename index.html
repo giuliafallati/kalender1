@@ -10,11 +10,11 @@
 
         table,
         th,
-        td {
+        td{
             border: 1px solid black;
             text-align: left;
             padding: 15px;
-            font-family: cursive;
+            font-family: cursive, 'Times New Roman', Times, serif;
             color: rgb(143, 108, 63);
         }
         table{
@@ -22,30 +22,37 @@
             margin: 20px;
         }
         th{
-            background-color: bisque;
+            background-color: rgb(255, 217, 147);
             
         }
         td{
-            background-color: lightyellow;
+            background-color: rgb(255, 251, 202);
         }
 
        
 
-        td:hover {
+        td:hover{
             background-color: linen;
         }
 
-        .dateInput.value{
-            background-color: coral;
+        #id-weekday{
+            background-color: bisque;
         }
+
+        #id-beginning, 
+        #id-end{
+            background-color: lightyellow;
+            color: lightgray;
+        }
+
     </style>
 </head>
 
 <body id='calendar'>
 
-    <label for="date-input" style="font-family: cursive; color: rgb(143, 108, 63);">Insert date:</label><br>
+    <label for="date-input" style="font-family: cursiv, 'Times New Roman', Times, serif; color: rgb(143, 108, 63);">Insert date:</label><br>
     <input id="date-input" type="date" style="background-color: rgb(247, 227, 206);">
-    <button id="go-button" type="button" style="background-color: rgb(247, 227, 206); font-family: cursive; color: rgb(143, 108, 63);">Go</button>
+    <button id="go-button" type="button" style="background-color: rgb(247, 227, 206); font-family: cursive, 'Times New Roman', Times, serif; color: rgb(143, 108, 63);">Go</button>
     <script src="js/index.js"></script>
 </body>
 

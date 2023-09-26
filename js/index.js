@@ -50,6 +50,7 @@ while( myDate.getDay() != 1);
  do{
 
 var tableCellElement = document.createElement( 'td');
+tableCellElement.id = 'id-weekday';
 textElement = document.createTextNode(myDate.toLocaleString('de', { weekday: 'long'}));
 tableCellElement.appendChild(textElement);
 tableRowElement.appendChild( tableCellElement);
@@ -70,43 +71,91 @@ tableRowElement = document.createElement('tr');
 //var dayOfWeek = myDate.toLocaleString('de', { weekday: 'long'});
 var startOfMonth = 0;
 var firstWeekday = firstDay.getDay();
-       
+var lastDayOldMonth = new Date(myDate.getFullYear(), myDate.getMonth(), 0);
 
-    do{
+//lastDayOldMonth = lastDayOldMonth.setDate(lastDayOldMonth.getDay());
 
-        if (firstDay.getDay() == 0) {
+while ( lastDayOldMonth.getDay() != 1) {
+    lastDayOldMonth.setDate(lastDayOldMonth.getDate() - 1);
+}
 
+firstDay = new Date(myDate.getFullYear(), myDate.getMonth() , 1);  
+
+
+
+do{
+
+    if (firstDay.getDay() == 0) {
+
+        do{
+
+            textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long'}));
+            var tableCellElement = document.createElement('td');
+            textElement = document.createTextNode(lastDayOldMonth.toLocaleString('de' , { day: 'numeric'}));
+            tableCellElement.appendChild(textElement);
+            tableRowElement.appendChild( tableCellElement);
+            startOfMonth = startOfMonth + 1;
+            lastDayOldMonth.setDate(lastDayOldMonth.getDate() + 1);
+
+            tableElement.appendChild(tableRowElement);
+            tableCellElement.id = 'id-beginning';
+        }
+        while(startOfMonth != 6);
+
+    }
+    else if(firstDay.getDay() == 1) {
+
+        do{
+
+            textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long'}));
+            var tableCellElement = document.createElement('td');
+            textElement = document.createTextNode(lastDayOldMonth.toLocaleString('de' , { day: 'numeric'}));
+            tableCellElement.appendChild(textElement);
+            tableRowElement.appendChild( tableCellElement);
+            startOfMonth = startOfMonth + 1;
+            lastDayOldMonth.setDate(lastDayOldMonth.getDate() + 1);
             do{
 
             textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long'}));
             var tableCellElement = document.createElement('td');
-            textElement = document.createTextNode(" ");
+            textElement = document.createTextNode(lastDayOldMonth.toLocaleString('de' , { day: 'numeric'}));
             tableCellElement.appendChild(textElement);
             tableRowElement.appendChild( tableCellElement);
             startOfMonth = startOfMonth + 1;
+            lastDayOldMonth.setDate(lastDayOldMonth.getDate() + 1);
+
             tableElement.appendChild(tableRowElement);
-            }
-            while(startOfMonth != 6);
+
+            tableCellElement.id = 'id-beginning';
 
         }
-        else{
-
-            textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long'}));
-            var tableCellElement = document.createElement('td');
-            textElement = document.createTextNode(" ");
-            tableCellElement.appendChild(textElement);
-            tableRowElement.appendChild( tableCellElement);
-            //if (startOfMonth != firstWeekday){
-            startOfMonth = startOfMonth + 1;
-            // }
-            tableElement.appendChild(tableRowElement);
+        while(startOfMonth != 6);
         }
+        while(startOfMonth != 7); 
+
     }
-    while ( startOfMonth <= firstWeekday - 2); 
+    else{
 
-    do{
+        textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long'}));
+        var tableCellElement = document.createElement('td');
+        textElement = document.createTextNode(lastDayOldMonth.toLocaleString('de' , { day: 'numeric'}));
+        tableCellElement.appendChild(textElement);
+        tableRowElement.appendChild( tableCellElement);
+            //if (startOfMonth != firstWeekday){
+        startOfMonth = startOfMonth + 1;
+        lastDayOldMonth.setDate(lastDayOldMonth.getDate() + 1);
+            // }
+        tableElement.appendChild(tableRowElement);      
 
-        if (firstDay.getDay() == 1){
+        tableCellElement.id = 'id-beginning';
+
+    }
+    }
+while ( startOfMonth <= firstWeekday - 2); 
+
+do{
+
+    if (firstDay.getDay() == 1){
             var tableRowElement = document.createElement('tr');
         }
        
@@ -117,39 +166,57 @@ var firstWeekday = firstDay.getDay();
         tableRowElement.appendChild( tableCellElement);
         firstDay.setDate(firstDay.getDate() + 1);
         tableElement.appendChild(tableRowElement);
-    
-       
-    
+        
     }
-    while ( firstDay <= lastDay);
+    
+while ( firstDay <= lastDay);
 
     //var endOfMonth = ;
-    var lastWeekday = lastDay.getDay();
+var lastWeekday = lastDay.getDay();
+    
+ var firstDayNewMonth = new Date(myDate.getFullYear(), myDate.getMonth());
 
-if (lastDay.getDay() != 0){
+ if (lastDay.getDay() != 0){
 
     do {
 
     textElement = document.createTextNode(lastWeekday.toLocaleString('de', { weekday: 'long'}));
     var tableCellElement = document.createElement('td');
-    textElement = document.createTextNode(" ");
+    textElement = document.createTextNode(firstDayNewMonth.toLocaleString('de', { day: 'numeric'}));
     tableCellElement.appendChild(textElement);
     tableRowElement.appendChild( tableCellElement);
-    if(lastWeekday != 6){
-    lastWeekday = lastWeekday + 1;
-    }
-    else{
-        lastWeekday = lastWeekday - 6;
-    }
+        if(lastWeekday != 6){
+             lastWeekday = lastWeekday + 1;
+    firstDayNewMonth.setDate(firstDayNewMonth.getDate() + 1);
+        }
+        else{
+             lastWeekday = lastWeekday - 6;
+        }
     tableElement.appendChild(tableRowElement);
+    tableCellElement.id = 'id-end';
 
     }
 
     while( lastWeekday != 0);
+    
+
 
 }
 
 
+/*if(firstDay != 1){
+
+    do {
+    var tableCellElement = document.createElement('td');
+    textElement = document.createTextNode(firstDayNewMonth.toLocaleString('de', { day: 'numeric'}));
+    tableCellElement.appendChild(textElement);
+    tableRowElement.appendChild( tableCellElement);
+    firstDayNewMonth.setDate(firstDayNewMonth.getDate() - 1);
+    tableElement.appendChild(tableRowElement);
+    }
+    while(startOfMonth != 0);
+
+}*/
 
 
 
